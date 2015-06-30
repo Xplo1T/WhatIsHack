@@ -5,12 +5,35 @@ using System.Text;
 using SimpleMemory;
 using System.Threading.Tasks;
 using LoLAPIInfo;
+using System.Windows;
 
 namespace LoLAPI
 {
 		public class Player
 		{
 
+		public string getName()
+		{
+			MemoryManager x = new MemoryManager();
+			x.Attach("League of Legends");
+			var bitname = x.ReadBytes(LeagueAdressesOffsets.PlayerObject.Name, 16);
+			var cleanedName = new List<byte>();
+			foreach(var Byte in bitname)
+			{
+				if(Byte != 0x00)
+				{
+					cleanedName.Add(Byte);
+				}
+				else
+				{
+					break;
+				}
+
+            }
+			var name = Encoding.Default.GetString(cleanedName.ToArray());
+			x.Disconnect();
+			return name;
+		}
 		private int getUserGold()
 			{
 				MemoryManager x = new MemoryManager();
