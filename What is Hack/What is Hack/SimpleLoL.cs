@@ -11,7 +11,7 @@ namespace LoLAPI
 {
 		public class Player
 		{
-
+		public int Info = LeagueAdressesOffsets.PlayerObject.BaseAdress;
 		public string getName()
 		{
 			MemoryManager x = new MemoryManager();
@@ -32,13 +32,14 @@ namespace LoLAPI
 			}
 			private int getCurrentMana()
 			{
-				MemoryManager x = new MemoryManager();
+			
+				MemoryManager x = new SimpleMemory.MemoryManager();
 				x.Attach("League of Legends");
-				var GoldLv1Adress = (IntPtr)(x.ReadInteger(LeagueAdressesOffsets.PlayerObject.BaseAdress) + LeagueAdressesOffsets.PlayerObject.Stats.Offset);
-				var GoldAdress = (IntPtr)(x.ReadInteger(GoldLv1Adress.ToInt32()) + LeagueAdressesOffsets.PlayerObject.Stats.currentMana.Offset);
-				var gold = x.ReadInteger(GoldAdress.ToInt32());
-				x.Disconnect();
-				return gold;
+				var adress = x.FindPattern(new byte[] { 0x89,0x47,0x4C,0xC6,0x07,0x00,0xF3,0x0F,0x10,0x45,0xE0 }, "xxxxxxxxxxxxxxx", 0x4C, 0x1a1000, 0xe60000);
+			var mana = x.ReadInteger(adress.ToInt32());
+			x.Disconnect();
+				return mana;
+
 			}
 			private int getMaximumMana()
 			{

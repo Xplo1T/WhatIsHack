@@ -13,6 +13,16 @@ namespace LoLAPIInfo
 		{
 			public static int Name = 0x131F3A0;
 			public static int BaseAdress = 0x0131E850;
+			
+				/*
+				get
+				{
+					SimpleMemory.MemoryManager x = new SimpleMemory.MemoryManager();
+					x.Attach("League of Legends");
+					var adress = x.FindPattern(new byte[] { 0x89, 0x47, 0x4C, 0xC6, 0x07, 0x00, 0xF3, 0x0F, 0x10, 0x45, 0xE0, 0x0F, 0x2E, 0x47, 0x54 }, "xxxxxxxxxxxxxxx", 0x8);
+					return adress.ToInt32();
+				}*/
+			
 			public static class Attributes
 			{
 				public static int Offset = 0xFC;
