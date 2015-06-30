@@ -16,21 +16,7 @@ namespace LoLAPI
 		{
 			MemoryManager x = new MemoryManager();
 			x.Attach("League of Legends");
-			var bitname = x.ReadBytes(LeagueAdressesOffsets.PlayerObject.Name, 16);
-			var cleanedName = new List<byte>();
-			foreach(var Byte in bitname)
-			{
-				if(Byte != 0x00)
-				{
-					cleanedName.Add(Byte);
-				}
-				else
-				{
-					break;
-				}
-
-            }
-			var name = Encoding.Default.GetString(cleanedName.ToArray());
+			var name = x.ReadString(LeagueAdressesOffsets.PlayerObject.Name, 16);
 			x.Disconnect();
 			return name;
 		}

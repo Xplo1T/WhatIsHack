@@ -12,7 +12,7 @@ namespace LoLAPIInfo
 		public static class PlayerObject
 		{
 			public static int Name = 0x131F3A0;
-			public static int BaseAdress = 0x024EE850;
+			public static int BaseAdress = 0x0131E850;
 			public static class Attributes
 			{
 				public static int Offset = 0xFC;
