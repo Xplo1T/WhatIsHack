@@ -28,6 +28,22 @@ namespace LoLAPIInfo
 				{
 					public static int Offset = 0x24;
 				}
+				public static class AP
+				{
+					public static int Offset = 0x1C;
+				}
+				public static class MagicResist
+				{
+					public static int Offset = 0x2C;
+				}
+				public static class AS
+				{
+					public static int Offset = 0x28;
+				}
+				public static class Armor
+				{
+					public static int Offset = 0x20;
+				}
 			}
 			public static class Stats
 			{
